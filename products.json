@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Dumbell",
+    "price": 100,
+    "img": "/public/dumbel.avif"
+  },
+  {
+    "id": "2",
+    "name": "Barbell",
+    "price": 200,
+    "img": "/public/barbell.jpeg"
+  },
+  {
+    "id": "3",
+    "name": "Bench",
+    "price": 300,
+    "img": "/public/bench.jpeg"
+  },
+  {
+    "id": "4",
+    "name": "Rack",
+    "price": 500,
+    "img": "/public/rack.jpeg"
+  }
+]

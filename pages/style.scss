@@ -1,0 +1,51 @@
+.imgContainer {
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+}
+Body {
+  background-color: rgb(255, 223, 127);
+}
+
+input[type='radio'] {
+  display: flex;
+
+  border: 1px solid red;
+  border-radius: 10px;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  &:checked {
+    background-color: aquamarine;
+  }
+}
+
+.labelContainer {
+  display: flex;
+}
+
+label {
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+.items-center {
+  color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+w-full {
+  align-items: center;
+}
+
+.navBar {
+  display: inline-block;
+  background-color: #666;
+  margin: 0 20px 20px 0;
+  padding-bottom: 20px;
+}
