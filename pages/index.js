@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,16 +8,8 @@ import dumbell from '../public/dumbel.avif';
 import rack from '../public/rack.jpeg';
 import styles from '../styles/Home.module.css';
 
-const navBar = css`
-  display: flex;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  grid-column: span 2;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-export default function Home(props) {
+export default function Home({ id, name, price, img }) {
+  console.log(id, name, price, img);
   return (
     <div className={styles.container}>
       <Head>
@@ -27,13 +18,31 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Heavy Heaven</h1>
-      <div css={navBar}>
+      <div>
+        <div>
+          <ul>
+            <li>
+              <Link href="/singepages/bodybuilding">
+                <a>Bodybuilding</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="./singepages/powerlifting">
+                <a>Powelifting</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="./singepages/strongman">
+                <a>Strongman</a>
+              </Link>
+            </li>
+          </ul>
+        </div>
         <ul>
           <li>
             <Image src={barbell} alt="barbell" width={300} height={300} />
             Barbell
           </li>
-
           <li>
             <Image src={bench} alt="bench" width={300} height={300} />
             Bench
@@ -49,45 +58,20 @@ export default function Home(props) {
         </ul>
       </div>
 
-      <div className="Pages">
-        <ul>
-          <li>
-            <Link href="/singepages/bodybuilding">
-              <a>Bodybuilding</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="./singepages/powerlifting">
-              <a>Powelifting</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="./singepages/strongman">
-              <a>Strongman</a>
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      {props.id}
+      {id}
       {products.map((product) => {
         return (
-          <div key={product.id} className=" font-sans">
+          <div key={id} className=" font-sans">
             <container className="w-full">
-              <img
-                src={product.img}
-                alt="Pic"
-                className=" w-full lg:w-1/2"
-                loading="lazy"
-              />
+              <img src={img} alt="Pic" className="Images" loading="lazy" />
             </container>
             <form className="flex-auto p-6">
               <div className="flex flex-wrap">
                 <h1 className="flex-auto text-lg font-semibold text-slate-900">
-                  {product.name}
+                  {name}
                 </h1>
                 <div className="text-lg font-semibold text-slate-500">
-                  {product.price}
+                  {price}
                 </div>
                 <div className="w-full flex-none text-sm font-medium text-slate-700 mt-2">
                   In stock

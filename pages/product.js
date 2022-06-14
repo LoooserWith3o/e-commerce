@@ -1,25 +1,19 @@
 import Link from 'next/link';
 import React from 'react';
 
-export default function product() {
+export default function product({ id, name, price, img }) {
+  console.log(id, name, price, img);
   return (
-    <div key={product.id} className=" font-sans">
+    <div key={id} className=" font-sans">
       <container className="w-full">
-        <img
-          src={product.img}
-          alt="Pic"
-          className="w-full lg:w-1/2 "
-          loading="lazy"
-        />
+        <img src={img} alt="Pic" className="w-full lg:w-1/2 " />
       </container>
       <form className="flex-auto p-6">
         <div className="flex flex-wrap">
           <h1 className="flex-auto text-lg font-semibold text-slate-900">
-            {product.name}
+            {name}
           </h1>
-          <div className="text-lg font-semibold text-slate-500">
-            {product.price}
-          </div>
+          <div className="text-lg font-semibold text-slate-500">{price}</div>
           <div className="w-full flex-none text-sm font-medium text-slate-700 mt-2">
             In stock
           </div>
@@ -61,24 +55,11 @@ export default function product() {
         <div className="flex space-x-4 mb-6 text-sm font-medium">
           <div className="flex-auto flex space-x-4">
             <button className="h-10 px-6 font-semibold rounded-md bg-black text-white">
-              <Link href={'/product/' + product.id}>
+              <Link href={'/product/' + img}>
                 <a>Add to muscle</a>
               </Link>
             </button>
           </div>
-          <button
-            className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
-            type="button"
-            aria-label="Like"
-          >
-            <svg width="10" height="10" fill="currentColor" aria-hidden="true">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-              />
-            </svg>
-          </button>
         </div>
         <p className="text-sm text-slate-700">
           Free shipping on weights below 20kg
