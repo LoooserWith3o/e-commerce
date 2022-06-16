@@ -14,6 +14,7 @@ export default function SingleProduct() {
       if (product.id === pid) {
         return (
           <Product
+            key={product.id}
             id={product.id}
             name={product.name}
             price={product.price}
@@ -21,6 +22,7 @@ export default function SingleProduct() {
           />
         );
       }
+      return null;
     });
   }
   return <ShowProduct />;

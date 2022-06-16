@@ -9,7 +9,7 @@
     "id": "2",
     "name": "Barbell",
     "price": 200,
-    "img": "/public/barbell.jpeg"
+    "img": "https://i.imgur.com/8mVBQIO.jpg"
   },
   {
     "id": "3",

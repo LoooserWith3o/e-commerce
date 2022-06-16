@@ -5,23 +5,30 @@
   }
 }
 Body {
-  background-color: rgba(255, 180, 127, 0.956);
+  background-color: black;
+  color: white;
 }
 
 input[type='radio'] {
   display: flex;
-
+  color: aliceblue;
   border: 1px solid red;
   border-radius: 10px;
   appearance: none;
   width: 30px;
   height: 30px;
   &:checked {
-    background-color: aquamarine;
+    background-color: red;
   }
+}
+.radioText {
+  color: white;
 }
 
 .labelContainer {
+  display: flex;
+}
+.labeldiv {
   display: flex;
 }
 
@@ -48,4 +55,14 @@ w-full {
   background-color: #666;
   margin: 0 20px 20px 0;
   padding-bottom: 20px;
+}
+
+.navigation {
+  background-color: gold;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-size: 20px;
 }
