@@ -8,6 +8,9 @@ import barbell from '../../public/barbell.jpeg';
 import bench from '../../public/bench.jpeg';
 import dumbell from '../../public/dumbel.avif';
 import rack from '../../public/rack.jpeg';
+import product from '../product';
+
+// import product from '../product';
 
 const list = css`
   display: flex;
@@ -23,20 +26,30 @@ const button = css`
 `;
 
 export default function Bodybuilding({ id, name, price, img }) {
+  console.log(id, name, price, img);
   const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
+
   function cartAdd(product) {
-    if (cartProducts[0]) {
+    if (
+      cartProducts.length &&
+      cartProducts.find((value) => value.id === product.id)
+    ) {
       const cartProductsExist = cartProducts.find(
         (value) => value.id === product.id,
       );
+
       const existingQty = cartProductsExist.qty;
       cartProductsExist.qty = existingQty + 1;
-      cartProducts.map(existingQty, existingQty + 1);
+      // cartProducts.map(existingQty, existingQty + 1);
+      setCartProducts([...cartProducts, cartProductsExist]);
+      // setCount(existingQty + 1);
     } else {
       product.qty = 1;
       cartProducts.push(product);
       console.log(cartProducts);
+
+      setCartProducts([...cartProducts]);
     }
   }
 
@@ -47,8 +60,24 @@ export default function Bodybuilding({ id, name, price, img }) {
       setCount(count - 1);
     }
   }
-  function addToCart() {
-    setCount(count + 1);
+  function addToCartCounter(currentProduct) {
+    const exist = cartProducts.find(
+      (product) => product.id === currentProduct.id,
+    );
+    if (exist) {
+      setCartProducts(
+        cartProducts.map((cartProduct) =>
+          cartProduct.id === currentProduct.id
+            ? { ...exist, qty: exist.qty + 1 }
+            : cartProduct,
+        ),
+      );
+      setCount(count + 1);
+
+      console.log('count', count);
+    } else {
+      setCartProducts([...cartProducts, { ...currentProduct, qty: 1 }]);
+    }
   }
 
   return (
@@ -143,7 +172,14 @@ export default function Bodybuilding({ id, name, price, img }) {
                 </div>
               </form>
               <h3>{count}</h3>
-              <button css={button} onClick={() => cartAdd(product)}>
+
+              <button
+                css={button}
+                onClick={() => {
+                  cartAdd(product);
+                  addToCartCounter(product);
+                }}
+              >
                 Add to muscle
               </button>
               <button css={button} onClick={removeFromCart}>
